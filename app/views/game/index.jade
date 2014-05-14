@@ -1,0 +1,26 @@
+extends ../shared/template
+
+block content
+  h1 Builder
+  form
+    input(type='text', name='username', autofocus=true, placeholder='Username')
+    button#login Login
+  #username
+  table
+    thead
+      th Wood
+      th Money
+    tbody
+      tr
+        td#wood
+        td#money
+  form
+    input#numbers(type='number', name='convert', autofocus=true, placeholder='Wood to Convert')
+    button#convert Convert
+
+  button#seed Plant
+  button#getforest Get Forest
+  #forest
+
+block scripts
+  script(src='/js/es6/compiled/game.js')
