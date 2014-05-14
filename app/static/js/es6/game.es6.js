@@ -45,7 +45,7 @@
     });
   }
 
-  function chop(){
+  function chop(e){
     var tree = $(this).parent();
     var treeId = $(this).parent().data('id');
 
@@ -57,6 +57,7 @@
         tree.replaceWith(t);
       }
     });
+    e.stopPropagation();
   }
 
   function getForest(){

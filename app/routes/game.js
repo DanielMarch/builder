@@ -18,7 +18,6 @@ exports.convert = (req, res)=>{
     user.cash += money;
     user.wood -= wood;
     users.save(user, (e, count)=>{
-      console.log(user);
       res.send(user);
     });
   });
@@ -32,6 +31,7 @@ exports.chop = (req, res)=>{
       var wood = tree.height / 2;
       var userID = tree.userId;
       tree.isChopped = true;
+      tree.height = 0;
       trees.save(tree, (e, count)=>{
         res.render('game/tree', {tree: tree, treeHelper:treeHelper}, (e,html)=>{
           res.send(html);
@@ -39,6 +39,8 @@ exports.chop = (req, res)=>{
         users.findOne({_id: userID},(e,u)=>{
           u.wood += wood;
           users.save(u, (error, count)=>{
+            console.log(u);
+            res.send(u);
           });
         });
       });

@@ -40,7 +40,7 @@
       })
     });
   }
-  function chop() {
+  function chop(e) {
     var tree = $(this).parent();
     var treeId = $(this).parent().data('id');
     $.ajax({
@@ -51,6 +51,7 @@
         tree.replaceWith(t);
       })
     });
+    e.stopPropagation();
   }
   function getForest() {
     var userId = $('#username').data('id');
